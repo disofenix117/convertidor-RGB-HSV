@@ -1,3 +1,9 @@
+/*
+"Disofenix 117"
+Diego Esteban Suarez C.
+Universidad Militar Nueva Granada
+2018
+*/
 #include<iostream>
 #include<string.h>
 #include <string>
