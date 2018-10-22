@@ -62,54 +62,67 @@ color RGB2HSV(float R, float G, float B)
 	Color.c3 = Max*100;
 	return (Color);
 }
-color HSV2RGB(float H, float S, float V)
+color HSV2RGB(int H, int S, int V)
 {
 	//variables locales
 	int R, G, B,C,X,m;
 
 	C = V * S;
-	X = C * (1 - abs((H / 60) - 1));
+	X = C * (1 - abs((H / 60)%2 - 1));
 	m = V - C;
-	if (H >= 0 && H <= 60)
+	if (H >= 0 && H < 60)
 	{
 		R = C;
 		G = X;
 		B = 0;
 	}
-	else if (H >= 60 && H <= 120)
+	else if (H >= 60 && H < 120)
 	{
 		R = X;
 		G = C;
 		B = 0;
 	}
-	else if (H >= 120 && H <= 180)
+	else if (H >= 120 && H < 180)
 	{
 		R = 0;
 		G = C;
 		B = X;
 	}
-	else if (H >= 180 && H <= 240)
+	else if (H >= 180 && H <240)
 	{
 		R = 0;
 		G = X;
 		B = C;
 	}
-	else if (H >= 240 && H <= 300)
+	else if (H >= 240 && H < 300)
 	{
 		R = X;
 		G = 0;
 		B = C;
 	}
-	else if (H >= 300 && H <= 360)
+	else if (H >= 300 && H <
+		360)
 	{
 		R = C;
 		G = 0;
 		B = X;
 	}
-
-	Color.c1 = (R + m) * 255;
-	Color.c2 = (G + m) * 255;
-	Color.c3 = (B + m) * 255;
+	
+	Color.c1 = (((R + m) * 255))/100;
+	Color.c2 = (((G + m) * 255))/100;
+	Color.c3 = (((B + m) * 255))/100;
+	if (Color.c1 < 0)
+	{
+		Color.c1 = 0;
+	}
+	if (Color.c2 < 0)
+	{
+		Color.c2 = 0;
+	}
+	if (Color.c3 < 0)
+	{
+		Color.c3 = 0;
+	}
 	return (Color);
 
 }
@@ -123,9 +136,8 @@ int main()
 	{
 		cout << ". : : C O N V E R T I D O R   D E   C O L O R   R G B - H S V : : . " << endl << endl;
 		cout << "Que quiere convertir?" << endl << endl;
-
-		//cout << "1) H S V - R G B." << endl;
 		cout << "1) R G B - H S V." << endl;
+		cout << "2) H S V - R G B." << endl;
 		cout << "0) Salir." << endl;
 		cin >> opc;
 		switch (opc)
