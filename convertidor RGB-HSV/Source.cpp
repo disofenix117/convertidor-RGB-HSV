@@ -100,8 +100,7 @@ color HSV2RGB(int H, int S, int V)
 		G = 0;
 		B = C;
 	}
-	else if (H >= 300 && H <
-		360)
+	else if (H >= 300 && H <360)
 	{
 		R = C;
 		G = 0;
